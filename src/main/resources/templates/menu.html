@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <style>
+        /* Basic styles for the navigation bar */
+        nav {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        nav .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .welcome-message {
+            font-size: 14px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <!-- Navigation links based on user role -->
+    <div class="nav-links">
+        <span sec:authorize="isAnonymous()">
+            <a th:href="@{/login}">Login</a>
+        </span>
+        <span sec:authorize="isAuthenticated()">
+            <a th:href="@{/home}">Home</a>
+            <a th:href="@{/logout}">Logout</a>
+        </span>
+        <span sec:authorize="hasRole('ROLE_ADMIN')">
+            <a th:href="@{/admin/home}">Admin</a>
+        </span>
+        <span sec:authorize="hasRole('ROLE_VISITOR')">
+            <a th:href="@{/visitor}">Visitor</a>
+        </span>
+    </div>
+
+    <!-- Welcome message for logged-in users -->
+    <div sec:authorize="isAuthenticated()" class="welcome-message">
+        Welcome, <span sec:authentication="principal.username">User</span>
+    </div>
+</nav>
+</body>
+</html>
