@@ -1,7 +1,7 @@
 package com.example.securityrole;
 
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="users")
