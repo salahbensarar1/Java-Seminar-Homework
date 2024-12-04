@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Messages</title>
+  <style>
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+<div th:insert="~{menu}"></div>
+<h1>Contact Messages</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Sender</th>
+    <th>Message</th>
+    <th>Timestamp</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="message : ${messages}">
+    <td th:text="${message.email}"></td>
+    <td th:text="${message.message}"></td>
+    <td th:text="${#temporals.format(message.timestamp, 'yyyy-MM-dd HH:mm:ss')}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

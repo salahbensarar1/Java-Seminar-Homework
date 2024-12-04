@@ -1,6 +1,7 @@
 package com.example.securityrole;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "contact_messages")
@@ -16,6 +17,8 @@ public class ContactMessage {
 
     @Column(length = 500)
     private String message;
+
+    private LocalDateTime timestamp;
 
     // Getters and setters
     public Long getId() {
@@ -48,5 +51,13 @@ public class ContactMessage {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 }

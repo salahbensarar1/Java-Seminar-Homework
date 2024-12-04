@@ -44,7 +44,9 @@
         </span>
         <span sec:authorize="hasAuthority('ROLE_ADMIN')">
       <a th:href="@{/admin/home}">Admin Home</a>
-    <a th:href="@{/admin/dashboard}">Admin Dashboard</a>
+      <a th:href="@{/admin/dashboard}">Admin Dashboard</a>
+            <a th:href="@{/messages}">Messages</a>
+
 </span>
         <span sec:authorize="hasAuthority('ROLE_VISITOR')">
     <a th:href="@{/visitor}">Visitor</a>
