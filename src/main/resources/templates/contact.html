@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      width: 50%;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    textarea {
+      resize: none;
+      height: 150px;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .success-message {
+      text-align: center;
+      color: green;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+<div th:insert="~{menu}"></div>
+<div class="container">
+  <h1>Contact Us</h1>
+
+  <!-- Show success message if applicable -->
+  <div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
+
+  <form action="/contact" method="post" th:object="${contactForm}">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" th:field="*{name}" />
+      <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" th:field="*{email}" />
+      <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" th:field="*{message}"></textarea>
+      <div th:if="${#fields.hasErrors('message')}" th:errors="*{message}" class="error-message"></div>
+    </div>
+    <div class="form-group">
+      <button type="submit">Send</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
