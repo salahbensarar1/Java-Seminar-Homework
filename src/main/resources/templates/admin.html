@@ -31,24 +31,24 @@
     </tbody>
 </table>
 
-<!-- Display Entries -->
-<!--<h2>Entries</h2>-->
-<!--<table border="1">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Spectator ID</th>-->
-<!--        <th>Match ID</th>-->
-<!--        <th>Timestamp</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="entry : ${entries}">-->
-<!--        <td th:text="${entry.spectatorId}"></td>-->
-<!--        <td th:text="${entry.matchId}"></td>-->
-<!--        <td th:text="${entry.timestamp}"></td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
+<h2>Entries</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Spectator ID</th>
+        <th>Match ID</th>
+        <th>Timestamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${entries}">
+        <!-- Access the composite key fields through entry.id -->
+        <td th:text="${entry.id.spectatorid}"></td>
+        <td th:text="${entry.id.matchid}"></td>
+        <td th:text="${entry.timestamp}"></td>
+    </tr>
+    </tbody>
+</table>
 
 <!-- Display Spectators -->
 <h2>Spectators</h2>

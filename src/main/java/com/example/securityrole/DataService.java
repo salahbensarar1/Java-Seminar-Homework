@@ -19,9 +19,8 @@ public class DataService {
     }
 
     public List<Entry> getAllEntries() {
-        return entryRepository.findAll();
+        return entryRepository.findAllWithRelations(); // Use the custom query
     }
-
     public List<Spectator> getAllSpectators() {
         return spectatorRepository.findAll();
     }

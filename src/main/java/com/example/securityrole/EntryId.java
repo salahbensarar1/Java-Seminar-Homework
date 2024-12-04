@@ -4,13 +4,13 @@ import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 import java.util.Objects;
-
 @Embeddable
 public class EntryId implements Serializable {
-    private Integer spectatorid;
-    private Integer matchid;
 
-    // Getters and setters
+    private Integer spectatorid; // Spectator ID
+    private Integer matchid;     // Match ID
+
+    // Getters and Setters
     public Integer getSpectatorid() {
         return spectatorid;
     }
@@ -27,7 +27,7 @@ public class EntryId implements Serializable {
         this.matchid = matchid;
     }
 
-    // Equals and hashCode methods
+    // equals() and hashCode() for composite key
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
