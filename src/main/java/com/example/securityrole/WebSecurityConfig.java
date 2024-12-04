@@ -37,11 +37,15 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
+
                         auth -> auth
                                 .requestMatchers("/css/**", "/js/**", "/images/**", "/resources/**").permitAll()
                                 .requestMatchers("/resources/**", "/","/home").authenticated()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/visitor/**").hasRole("VISITOR")
+                                .requestMatchers("/matches").hasAnyRole("ADMIN", "USER")
+                                .requestMatchers("/entries").hasRole("ADMIN")
+                                .requestMatchers("/spectators").hasAnyRole("ADMIN", "VISITOR")
                 )
                 .formLogin(
                         form -> form
@@ -57,8 +61,8 @@ public class WebSecurityConfig {
                                         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
                                         if (authorities.stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
-                                            response.sendRedirect("/admin/home");
-                                        } else if (authorities.stream().anyMatch(a -> a.getAuthority().equals("ROLE_VISITOR"))) {
+                                            response.sendRedirect("/admin/dashboard");
+                                        }else if (authorities.stream().anyMatch(a -> a.getAuthority().equals("ROLE_VISITOR"))) {
                                             response.sendRedirect("/visitor");
                                         } else {
                                             response.sendRedirect("/home");

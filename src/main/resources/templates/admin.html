@@ -7,5 +7,69 @@
 <body>
 <div th:insert="menu"></div>
 <h1>Only Admin can see this page</h1>
+
+<!-- Display Matches -->
+<h2>Matches</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>Ticket Price</th>
+        <th>Match Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="match : ${matches}">
+        <td th:text="${match.id}"></td>
+        <td th:text="${match.mdate}"></td>
+        <td th:text="${match.startsat}"></td>
+        <td th:text="${match.ticketprice}"></td>
+        <td th:text="${match.mtype}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Display Entries -->
+<!--<h2>Entries</h2>-->
+<!--<table border="1">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Spectator ID</th>-->
+<!--        <th>Match ID</th>-->
+<!--        <th>Timestamp</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="entry : ${entries}">-->
+<!--        <td th:text="${entry.spectatorId}"></td>-->
+<!--        <td th:text="${entry.matchId}"></td>-->
+<!--        <td th:text="${entry.timestamp}"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!-- Display Spectators -->
+<h2>Spectators</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Has Pass</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="spectator : ${spectators}">
+        <td th:text="${spectator.id}"></td>
+        <td th:text="${spectator.sname}"></td>
+        <td th:text="${spectator.male} ? 'Male' : 'Female'"></td>
+        <td th:text="${spectator.haspass} ? 'Yes' : 'No'"></td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
