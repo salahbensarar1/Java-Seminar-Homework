@@ -48,6 +48,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/spectators").hasAnyRole("ADMIN", "VISITOR")
                                 .requestMatchers("/contact", "/contact/**").permitAll()
                                 .requestMatchers("/messages").hasRole("ADMIN")
+                                .requestMatchers("/api/**").permitAll()
                 )
                 .formLogin(
                         form -> form
