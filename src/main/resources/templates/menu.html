@@ -42,12 +42,13 @@
             <a th:href="@{/home}">Home</a>
             <a th:href="@{/logout}">Logout</a>
         </span>
-        <span sec:authorize="hasRole('ROLE_ADMIN')">
-            <a th:href="@{/admin/home}">Admin</a>
-        </span>
-        <span sec:authorize="hasRole('ROLE_VISITOR')">
-            <a th:href="@{/visitor}">Visitor</a>
-        </span>
+        <span sec:authorize="hasAuthority('ROLE_ADMIN')">
+      <a th:href="@{/admin/home}">Admin Home</a>
+    <a th:href="@{/admin/dashboard}">Admin Dashboard</a>
+</span>
+        <span sec:authorize="hasAuthority('ROLE_VISITOR')">
+    <a th:href="@{/visitor}">Visitor</a>
+</span>
     </div>
 
     <!-- Welcome message for logged-in users -->
