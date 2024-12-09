@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 05, 2024 at 12:52 AM
+-- Generation Time: Dec 09, 2024 at 01:59 PM
 -- Server version: 9.0.1
 -- PHP Version: 8.2.4
 
@@ -54,7 +54,7 @@ CREATE TABLE `entries` (
   `spectatorid` int NOT NULL,
   `matchid` int NOT NULL,
   `timestamp` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `entries`
@@ -95,7 +95,7 @@ CREATE TABLE `matches` (
   `startsat` time DEFAULT NULL,
   `ticketprice` decimal(10,2) DEFAULT NULL,
   `mtype` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `matches`
@@ -134,7 +134,7 @@ CREATE TABLE `spectators` (
   `sname` varchar(100) DEFAULT NULL,
   `male` tinyint(1) DEFAULT NULL,
   `haspass` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `spectators`
